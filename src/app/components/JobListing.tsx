@@ -1,5 +1,5 @@
 import React from 'react';
-import  styles  from './JobListing.module.css';
+import styles from './JobListing.module.css';
 
 interface jobListingProps {
     jobListing: {
@@ -19,10 +19,10 @@ interface jobListingProps {
     };
 }
 
-const JobListing: React.FC<jobListingProps> = ({jobListing}) => {
+const JobListing: React.FC<jobListingProps> = ({ jobListing }) => {
     return (
         <div className={styles.card}>
-            <picture><img src={jobListing.logo} alt={jobListing.company} /></picture>
+            <picture className={styles.card__logo}><img src={jobListing.logo} alt={jobListing.company} /></picture>
             <div className={styles.card__left}>
                 <div className={styles.card__titlebar}>
                     <h2 className={styles.card__title}>{jobListing.company}</h2>
@@ -32,17 +32,21 @@ const JobListing: React.FC<jobListingProps> = ({jobListing}) => {
                 <h1 className={styles.card__position}>{jobListing.position}</h1>
                 <div className={styles.card__details}>
                     <p className={styles.card__paragraph}>{jobListing.postedAt}</p>
+                    <p className="card__separator">•</p>
                     <p className={styles.card__paragraph}>{jobListing.contract}</p>
+                    <p className="card__separator">•</p>
                     <p className={styles.card__paragraph}>{jobListing.location}</p>
                 </div>
             </div>
             <div className={styles.card__right}>
-                {jobListing.languages.map((tag: string , index: number) => (
+                {jobListing.tools.map((tag: string, index: number) => (
                     <div className={styles.card__tag} key={index}>{tag}</div>
                 ))}
-                {jobListing.tools.map((tag: string , index: number) => (
+                {jobListing.languages.map((tag: string, index: number) => (
                     <div className={styles.card__tag} key={index}>{tag}</div>
                 ))}
+                <div className={styles.card__tag} >{jobListing.level}</div>
+                <div className={styles.card__tag} >{jobListing.role}</div>
             </div>
         </div>
     );
