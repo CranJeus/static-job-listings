@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styles from './JobListing.module.css';
 
@@ -17,9 +18,14 @@ interface jobListingProps {
         languages: Array<string>;
         tools: Array<string>;
     };
+    toggleTag: (tag: string) => void;
 }
 
-const JobListing: React.FC<jobListingProps> = ({ jobListing }) => {
+const JobListing: React.FC<jobListingProps> = ({ jobListing, toggleTag }) => {
+    const handleTagClick = (tag: string) => {
+        toggleTag(tag); // Call the toggleTag function from the parent component
+    };
+
     return (
         <div className={styles.card}>
             <picture className={styles.card__logo}><img src={jobListing.logo} alt={jobListing.company} /></picture>
@@ -37,16 +43,18 @@ const JobListing: React.FC<jobListingProps> = ({ jobListing }) => {
                     <p className="card__separator">•</p>
                     <p className={styles.card__paragraph}>{jobListing.location}</p>
                 </div>
+                <div className="card__hr" />
             </div>
             <div className={styles.card__right}>
+                
                 {jobListing.tools.map((tag: string, index: number) => (
-                    <div className={styles.card__tag} key={index}>{tag}</div>
+                    <div className={styles.card__tag_tool} key={index} onClick={() => handleTagClick(tag)}>{tag} </div>
                 ))}
                 {jobListing.languages.map((tag: string, index: number) => (
-                    <div className={styles.card__tag} key={index}>{tag}</div>
+                    <div className={styles.card__tag_language} key={index}onClick={() => handleTagClick(tag)}>{tag}</div>
                 ))}
-                <div className={styles.card__tag} >{jobListing.level}</div>
-                <div className={styles.card__tag} >{jobListing.role}</div>
+                <div className={styles.card__tag_level}onClick={() => handleTagClick(jobListing.level)} >{jobListing.level}</div>
+                <div className={styles.card__tag_role} onClick={() => handleTagClick(jobListing.role)}>{jobListing.role}</div>
             </div>
         </div>
     );

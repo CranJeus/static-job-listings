@@ -3,11 +3,21 @@
     display: flex;
     flex-direction: column;
     font-weight: var(--fw-regular);
-    max-width: 1050px;
-    gap: 1rem;
-    align-items: center;
+    gap: 60px;
     color: var(--desaturated-dark-cyan);
+    margin-top: 60px;
+    margin-bottom: 2rem;
+    align-items: center;
   }
   .main {
     background-color: var(--light-grayish-cyan-background);
+    display: grid;
+    
+  }
+
+  @media screen and (max-width:600px) {
+    .card__container {
+        gap: 80px;
+    }
+
   }

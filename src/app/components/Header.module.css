@@ -1,0 +1,48 @@
+.header {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    color: var(--desaturated-dark-cyan);
+    font-weight: var(--fw-bold);
+}
+.logo {
+    width: 100%;
+}
+.filterbar {
+    background-color: white;
+    border-radius: .5em;
+    width: 77%;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    margin-top: -2.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.tag {
+    display: inline-block;
+    background-color: var(--light-grayish-cyan-background);
+    line-height: 1.5;
+    padding: .25em .5em;
+    cursor: pointer;
+    border-radius: 0.5em 0 0 0.5em;
+
+}
+.tag::after {
+    display: inline-block;
+    content: "X";
+    color: white;
+    background-color: var(--desaturated-dark-cyan);
+    line-height: 1.5;
+    padding: .25em .5em;
+    position: absolute;
+    margin-left: .25em;
+    transform: translateY(-.25rem);
+    border-radius: 0 0.5em .5em 0em;
+}
+
+@media screen and (max-width:600px) {
+    .filterbar {
+        width: 90%;
+    }
+}
