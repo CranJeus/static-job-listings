@@ -19,6 +19,7 @@ const Header: React.FC<HeaderProps> = ({ tags, onClick, onClear }) => {
                 <source media="(max-width: 600px)" srcSet="./images/bg-header-mobile.svg" />
                 <img src={"./images/bg-header-desktop.svg"} alt="Header Image" width="100%" />
             </picture>
+            {tags.length>0?(
             <div className={styles.filterbar}>
                 <div className={styles.filterbar_tags}>
                     {tags.map((tag: string, index: number) => (
@@ -29,8 +30,9 @@ const Header: React.FC<HeaderProps> = ({ tags, onClick, onClear }) => {
                         </div>
                     ))}
                 </div>
-                <p className={styles.filterbar_clear} onClick={() => handleTagClear()} >clear</p>
+                <div className={styles.filterbar_clear} onClick={() => handleTagClear()}>clear</div>
             </div>
+            ):null}
         </header>
     );
 };
