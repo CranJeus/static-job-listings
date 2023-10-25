@@ -81,6 +81,10 @@
     cursor: pointer;
     border-radius: .5em;
 }
+.card__tag_tool:is(:hover,:focus), .card__tag_language:is(:hover,:focus), .card__tag_level:is(:hover,:focus), .card__tag_role:is(:hover,:focus){
+    background-color: var(--desaturated-dark-cyan);
+    color: white;
+}
 
 .card:has(.pill__featured) {
     border-left: solid thick;

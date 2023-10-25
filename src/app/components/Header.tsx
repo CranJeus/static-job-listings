@@ -3,12 +3,16 @@ import styles from './Header.module.css';
 interface HeaderProps {
     tags: Array<string>;
     onClick: (tag: string) => void;
+    onClear: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ tags, onClick }) => {
+const Header: React.FC<HeaderProps> = ({ tags, onClick, onClear }) => {
     const handleTagClick = (tag: string) => {
         onClick(tag); // Call the toggleTag function from the parent component
     };
+    const handleTagClear = () => {
+        onClear();
+    }
     return (
         <header className={styles.header}>
             <picture className={styles.logo}>
@@ -16,9 +20,16 @@ const Header: React.FC<HeaderProps> = ({ tags, onClick }) => {
                 <img src={"./images/bg-header-desktop.svg"} alt="Header Image" width="100%" />
             </picture>
             <div className={styles.filterbar}>
-                {tags.map((tag: string, index: number) => (
-                    <div className={styles.tag} key = {index} onClick={() => handleTagClick(tag)}>{tag}</div>
-                ))}
+                <div className={styles.filterbar_tags}>
+                    {tags.map((tag: string, index: number) => (
+                        <div className={styles.tag_container} key={index} >
+                            
+                            <div className={styles.tag} >{tag}</div>
+                            <div className={styles.tag_after} onClick={() => handleTagClick(tag)}>X</div>
+                        </div>
+                    ))}
+                </div>
+                <p className={styles.filterbar_clear} onClick={() => handleTagClear()} >clear</p>
             </div>
         </header>
     );

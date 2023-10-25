@@ -9,13 +9,17 @@ const Home: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const addTag = (tag: string) => {
-    if (! selectedTags.includes(tag)) {
+    if (!selectedTags.includes(tag)) {
       setSelectedTags([...selectedTags, tag]);
     }
   };
   const removeTag = (tag: string) => {
     setSelectedTags(selectedTags.filter((t) => t !== tag));
-};
+  };
+
+  const clearTags = () => {
+    setSelectedTags([]);
+  }
 
   const filteredData = data.filter((jobListing) => {
     return selectedTags.every((tag) => {
@@ -29,8 +33,8 @@ const Home: React.FC = () => {
   });
   return (
     <div>
-      <Header tags={selectedTags} onClick={removeTag} />
-      
+      <Header tags={selectedTags} onClick={removeTag} onClear={clearTags} />
+
       <main className={styles.main}>
         <div className={styles.card__container}>
           {filteredData.map((jobListing) => (

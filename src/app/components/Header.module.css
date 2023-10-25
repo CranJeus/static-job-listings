@@ -12,33 +12,48 @@
     background-color: white;
     border-radius: .5em;
     width: 77%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
     padding: 1rem;
     margin-top: -2.5rem;
-    gap: 2rem;
+}
+.filterbar_tags {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
     flex-wrap: wrap;
+}
+.filterbar_clear{
+    display: flex;
+    flex-direction: row-reverse;
+    cursor: pointer;
+}
+.filterbar_clear:is(:hover, :focus){
+    text-decoration: underline;
 }
 .tag {
     display: inline-block;
     background-color: var(--light-grayish-cyan-background);
     line-height: 1.5;
     padding: .25em .5em;
-    cursor: pointer;
+    
     border-radius: 0.5em 0 0 0.5em;
 
 }
-.tag::after {
+
+.tag_after:is(:hover, :focus) {
+    background-color: var(--very-dark-grayish-cyan);
+}
+.tag_after {
     display: inline-block;
-    content: "X";
     color: white;
     background-color: var(--desaturated-dark-cyan);
     line-height: 1.5;
     padding: .25em .5em;
     position: absolute;
-    margin-left: .25em;
-    transform: translateY(-.25rem);
+    transform: 0;
     border-radius: 0 0.5em .5em 0em;
+    cursor: pointer;
 }
 
 @media screen and (max-width:600px) {
