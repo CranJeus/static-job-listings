@@ -43,7 +43,9 @@ const JobListing: React.FC<jobListingProps> = ({ jobListing, toggleTag }) => {
                     <p className="card__separator">•</p>
                     <p className={styles.card__paragraph}>{jobListing.location}</p>
                 </div>
-                <div className="card__hr" />
+                <div  >
+                    <hr className={styles.card__hr}></hr>
+                </div>
             </div>
             <div className={styles.card__right}>
                 

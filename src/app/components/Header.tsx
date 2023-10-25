@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ tags, onClick, onClear }) => {
     return (
         <header className={styles.header}>
             <picture className={styles.logo}>
-                <source media="(max-width: 600px)" srcSet="./images/bg-header-mobile.svg" />
+                <source media="(max-width: 700px)" srcSet="./images/bg-header-mobile.svg" />
                 <img src={"./images/bg-header-desktop.svg"} alt="Header Image" width="100%" />
             </picture>
             {tags.length>0?(
